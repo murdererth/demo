@@ -31,9 +31,14 @@ public class HelloController {
 //    PUT /api/users/{id} — แก้ไข User โดย user id
 //    DELETE /api/users/{id} — ลบ User โดย user id
 
-    @GetMapping("/hello")
-    public HelloResponse sayHi2(@RequestParam(name = "id") String fooId, @RequestParam String name) {
-        return new HelloResponse("Hello " + name + ", id " + fooId);
+    @GetMapping("/hello/jpql")
+    public HelloResponse sayHi2(@RequestParam(name = "id") int fooId) {
+        return new HelloResponse(helloService.searchUserJPQL(fooId));
+    }
+
+    @GetMapping("/hello/native")
+    public HelloResponse sayHi3(@RequestParam(name = "id") String fooId) {
+        return new HelloResponse(helloService.searchUserNative(fooId));
     }
 
 }
