@@ -14,7 +14,17 @@ public class HelloController {
         this.helloService = helloService;
     }
 
+
 //    GET /hello/{name}
+
+//    Success
+//    Code 200
+//    {
+//        "message" : "Hello John"
+//    }
+
+//    Failure :: user not found
+//    Code 404
 //    {
 //        "message" : "Hello John"
 //    }
