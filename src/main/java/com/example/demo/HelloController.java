@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
+    private HelloService helloService;
+
+    public HelloController(HelloService helloService) {
+        this.helloService = helloService;
+    }
+
 //    GET /hello/{name}
 //    {
 //        "message" : "Hello John"
@@ -15,7 +21,7 @@ public class HelloController {
 
     @GetMapping("/hello/{name}")
     public HelloResponse sayHi(@PathVariable String name) {
-        return new HelloResponse("Hello " + name);
+        return new HelloResponse(helloService.concatData(name));
     }
 
 //    GET /api/users — เรียกดูรายการ User ทั้งหมด
