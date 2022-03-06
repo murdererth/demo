@@ -9,6 +9,9 @@ public class HelloService {
 
     private UserRepository userRepository;
 
+    public HelloService() {
+    }
+
     public HelloService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -45,5 +48,9 @@ public class HelloService {
         }
 
         throw new UserNotFoundException(userId);
+    }
+
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 }
