@@ -10,14 +10,19 @@ public class DemoTxService {
 
     private UserRepository userRepository;
 
-    public DemoTxService(UserRepository userRepository) {
+    private Service2 service2;
+    private Service3 service3;
+
+    public DemoTxService(UserRepository userRepository, Service2 service2, Service3 service3) {
         this.userRepository = userRepository;
+        this.service2 = service2;
+        this.service3 = service3;
     }
 
+    @Transactional
     public void callRepository() {
-        step1();
-        step2();
-        processLongRunning();
+     service2.doSth();
+     service3.doSth();
     }
 
     private void processLongRunning() {
