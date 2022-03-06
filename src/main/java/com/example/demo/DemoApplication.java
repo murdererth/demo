@@ -8,18 +8,18 @@ import javax.annotation.PostConstruct;
 @SpringBootApplication
 public class DemoApplication {
 
-	private HelloService helloService;
+	private UserRepository userRepository;
 
-	public DemoApplication(HelloService helloService) {
-		this.helloService = helloService;
+	public DemoApplication(UserRepository userRepository) {
+		this.userRepository = userRepository;
 	}
 
 	@PostConstruct
 	public void initialData() {
-		helloService.saveUser(new User("B1"));
-		helloService.saveUser(new User("B2"));
-		helloService.saveUser(new User("B3"));
-		helloService.saveUser(new User("B4"));
+		userRepository.save(new User("B1"));
+		userRepository.save(new User("B2"));
+		userRepository.save(new User("B3"));
+		userRepository.save(new User("B4"));
 	}
 
 	public static void main(String[] args) {
